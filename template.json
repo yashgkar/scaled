@@ -1,31 +1,4 @@
 {
-  "name": "cra-template-scaled",
-  "version": "0.0.1",
-  "license": "MIT",
-  "author": "Yash Garudkar <yashgarudkar@gmail.com>",
-  "engines": {
-    "node": ">=10"
-  },
-  "main": "template.json",
-  "description": "A quick start Create React App Scalable template",
-  "keywords": [
-    "react",
-    "create-react-app",
-    "cra-template",
-    "template",
-    "formik",
-    "tslint",
-    "redux",
-    "react-redux",
-    "material-ui",
-    "react-router-dom",
-    "typescript",
-    "prettier"
-  ],
-  "files": [
-    "template",
-    "template.json"
-  ],
   "dependencies": {
     "@emotion/react": "^11.8.2",
     "@emotion/styled": "^11.8.1",
@@ -66,23 +39,5 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
   }
 }

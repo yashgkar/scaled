@@ -1,0 +1,18 @@
+{
+  "rules": {
+    "quotemark": [
+      true,
+      "double"
+    ],
+    "max-line-length": [
+      true,
+      {
+        "limit": 70,
+        "ignore-pattern": "^import [^,]+ from |^export | implements"
+      }
+    ]
+  },
+  "linterOptions": {
+    "exclude": ["node_modules"]
+  }
+}
