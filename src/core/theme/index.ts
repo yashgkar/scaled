@@ -1,4 +1,7 @@
 import { createTheme } from "@mui/material";
+
+// file imports
+import { DarkTheme, LightTheme } from "./colors";
 import SFUITextBold from "../../assets/sf-ui/SFUIText-Bold.ttf";
 import SFUITextBoldItalic from "../../assets/sf-ui/SFUIText-BoldItalic.ttf";
 import SFUITextHeavy from "../../assets/sf-ui/SFUIText-Heavy.ttf";
@@ -13,60 +16,16 @@ import SFUITextSemiBold from "../../assets/sf-ui/SFUIText-Semibold.ttf";
 import SFUITextSemiboldItalic from "../../assets/sf-ui/SFUIText-SemiboldItalic.ttf";
 
 const AppTheme = (themeMode: boolean) => {
-  return createTheme({
-    typography: {
-      fontFamily: "SFUI-Text, sans-serif",
-    },
-    palette: {
-      ...(themeMode
-        ? {
-          primary: {
-            main: "#6FB2D2"
-          },
-          secondary: {
-            main: "#EEEEEE"
-          },
-          error: {
-            main: "#E45826",
-          },
-          success: {
-            main: "#85C88A"
-          },
-          warning: {
-            main: "#EBD671"
-          },
-          myColors: {
-            bgColor: "#fbf1c7",
-						textColor: "#3c3836",
-						subColor: "#a89984"
-          }
-        }
-        : {
-          primary: {
-            main: "#5c7da5"
-          },
-          secondary: {
-            main: "#05595B"
-          },
-          error: {
-            main: "#E83A14",
-          },
-          success: {
-            main: "#00C897"
-          },
-          warning: {
-            main: "#E2D784"
-          },
-					myColors: {
-						bgColor: "#212b42",
-						textColor: "#91b4d5",
-						subColor: "#5c7da5"
-					}
-        })
-    },
-    components: {
-      MuiCssBaseline: {
-        styleOverrides: `
+	return createTheme({
+		typography: {
+			fontFamily: "SFUI-Text, sans-serif",
+		},
+		palette: {
+			...(themeMode ? DarkTheme : LightTheme)
+		},
+		components: {
+			MuiCssBaseline: {
+				styleOverrides: `
 					@font-face {
 						font-family: 'SFUI-Text';
 						font-style: normal;
@@ -152,16 +111,16 @@ const AppTheme = (themeMode: boolean) => {
 						src: local('SFUI-Text'), url(${SFUITextSemiboldItalic}) format('truetype');
 					}
 				`
-      },
-      MuiTypography: {
-        styleOverrides: {
-          root: {
-            fontFamily: "SFUI-Text, sans-serif"
-          }
-        }
-      }
-    }
-  });
+			},
+			MuiTypography: {
+				styleOverrides: {
+					root: {
+						fontFamily: "SFUI-Text, sans-serif"
+					}
+				}
+			}
+		}
+	});
 };
 
 export default AppTheme;

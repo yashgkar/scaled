@@ -11,7 +11,7 @@ interface IAppProps {
 function App(props: IAppProps) {
   return (
     <ThemeProvider theme={AppTheme(props.themeMode)}>
-      <Box sx={{ bg: "secondary.main" }}>
+      <Box sx={{ bg: "secondary.main", minHeight: "100vh" }}>
         <Routes />
       </Box>
     </ThemeProvider>

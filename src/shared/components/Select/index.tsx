@@ -1,7 +1,7 @@
 import * as React from "react";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
-import { FormControl, SelectProps, FormHelperText } from "@mui/material";
+import { SelectProps } from "@mui/material";
 import { Field, getIn } from "formik";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 interface ISelect extends SelectProps {
@@ -25,7 +25,6 @@ function AutoSearch(selectProps: ISelect) {
     options,
     id,
     variant,
-    size = "small",
     setFieldValue,
     fullWidth = false
   } = selectProps;
@@ -37,49 +36,35 @@ function AutoSearch(selectProps: ISelect) {
             ? getIn(errors, field.name)
             : false;
         return (
-          <FormControl
-            variant={variant}
-            size={size}
+          <Autocomplete
             fullWidth={fullWidth}
-          >
-            <Autocomplete
-              fullWidth={fullWidth}
-              disableClearable
-              id={id}
-              options={options}
-              onChange={
-                (_, newValue) =>
-                  setFieldValue(field.name, newValue.value)
-              }
-              includeInputInList
-              onOpen={field.onBlur}
-              getOptionLabel={(options) => options.fieldLabel || ""}
-              isOptionEqualToValue={(options, value) =>
-                options.value === value.value
-              }
-              popupIcon={<ExpandMoreIcon />}
-              renderInput={(params) => (
-                <TextField
-                  {...params}
-                  label={label}
-                  error={Boolean(error)}
-                  onChange={field.onChange}
-                  onBlur={field.onBlur}
-                  name={field.name}
-                />
-              )}
-            />
-            <FormHelperText
-              id={selectProps.id}
-              sx={{
-                color: "error.main",
-                textAlign: "left",
-                m: "0",
-              }}
-            >
-              {error}
-            </FormHelperText>
-          </FormControl>
+            disableClearable
+            id={id}
+            options={options}
+            onChange={
+              (_, newValue) =>
+                setFieldValue(field.name, newValue.value)
+            }
+            includeInputInList
+            onOpen={field.onBlur}
+            getOptionLabel={(options) => options.fieldLabel || ""}
+            isOptionEqualToValue={(options, value) =>
+              options.value === value.value
+            }
+            popupIcon={<ExpandMoreIcon />}
+            renderInput={(params) => (
+              <TextField
+                {...params}
+                label={label}
+                error={Boolean(error)}
+                onChange={field.onChange}
+                onBlur={field.onBlur}
+                name={field.name}
+                variant={variant}
+                helperText={error}
+              />
+            )}
+          />
         );
       }}
     </Field>

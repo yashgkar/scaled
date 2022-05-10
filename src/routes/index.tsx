@@ -18,7 +18,6 @@ function RootRoutes() {
         />
       ))}
     </Routes>
-
   );
 }
 

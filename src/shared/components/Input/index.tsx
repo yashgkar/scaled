@@ -1,17 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   FormControl,
   FormHelperText,
-  Input as StandardInput,
+  Input,
   InputLabel,
-  FormControlProps,
-  FilledInput,
-  OutlinedInput,
-  InputProps
+  InputProps,
+  InputAdornment,
+  IconButton
 } from "@mui/material";
 import { Field, getIn } from "formik";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
 
-interface IProps extends FormControlProps {
+interface IProps extends InputProps {
   label: string;
   helpertext?: string;
   validate?: any;
@@ -19,6 +19,7 @@ interface IProps extends FormControlProps {
   errorHeight?: boolean;
   name?: string;
   type?: string;
+  variant?: "filled" | "outlined" | "standard";
 }
 
 function MyInput(props: IProps) {
@@ -29,24 +30,33 @@ function MyInput(props: IProps) {
     errorHeight,
     ...inputProps
   } = props;
+  const [showPassword, setShowPassword] = useState(false);
 
-  const Input = (props: InputProps) => {
-    switch (variant) {
-      case "standard":
-        return <StandardInput {...props}/>
-      case "outlined":
-        return <OutlinedInput {...props} label={label} />
-      case "filled":
-        return <FilledInput {...props}/>
-      default:
-        return <StandardInput {...props}/>
+  const getType = () => {
+    if (type === "password") {
+      if (showPassword) {
+        return "text";
+      }
+      return "password";
     }
-  }
+    return type;
+  };
+
+  const handleClickShowPassword = () => {
+    setShowPassword(!showPassword);
+  };
+
+  const handleMouseDownPassword = (
+    event: React.MouseEvent<HTMLButtonElement>
+  ) => {
+    event.preventDefault();
+  };
 
   return (
     <Field name={props.name}>
       {({ field, form: { touched, errors, submitCount } }: any) => {
-        let error = (field.value && getIn(errors, field.name))
+        let error = (field.value
+          && getIn(errors, field.name))
           ? getIn(errors, field.name) : "";
         if (!error) {
           error = getIn(touched, field.name) || submitCount
@@ -54,43 +64,60 @@ function MyInput(props: IProps) {
             : false;
         }
         return (
-          <>
-            <FormControl
-              fullWidth
-              sx={{ mt: 2, mb: 2 }}
-              variant={variant}
-            >
+          <FormControl
+            fullWidth sx={{
+              mt: "1rem",
+              mb: 1
+            }}
+            variant={variant}
+          >
+            {label.length ?
               <InputLabel
                 htmlFor={props.id}
                 focused={true}
-                variant={variant}
+                shrink={true}
               >
                 {label}
               </InputLabel>
-              <Input
-                id={props.id}
-                {...inputProps}
-                type={type}
-                onChange={field.onChange}
-                onBlur={field.onBlur}
-                name={field.name}
-                value={field.value}
-                error={Boolean(error)}
-                {...field}
-                sx={{
-                  color: "myColors.subColor"
-                }}
-              />
-              <FormHelperText
-                id={props.id}
-                sx={{
-                  color: "error.main"
-                }}
-              >
-                {error}
-              </FormHelperText>
-            </FormControl>
-          </>
+              : null}
+            <Input
+              {...inputProps}
+              type={getType()}
+              endAdornment={
+                (type === "password") && (
+                  <InputAdornment
+                    position="end"
+                  >
+                    <IconButton
+                      aria-label="toggle password visibility"
+                      onClick={handleClickShowPassword}
+                      onMouseDown={handleMouseDownPassword}
+                      sx={{ m: 0, transform: "translateY(-4px)" }}
+                    >
+                      {showPassword
+                        ? <Visibility />
+                        : <VisibilityOff />}
+                    </IconButton>
+                  </InputAdornment>
+                )
+              }
+              onChange={field.onChange}
+              onBlur={field.onBlur}
+              name={field.name}
+              value={field.value}
+              error={Boolean(error)}
+              {...field}
+            />
+            <FormHelperText
+              id={props.id}
+              sx={{
+                color: "error.main",
+                minHeight: errorHeight ? "19px" : "auto"
+              }}
+            >
+              {error}
+            </FormHelperText>
+          </FormControl>
         );
       }}
     </Field>

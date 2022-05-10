@@ -128,9 +128,11 @@ function Content() {
               password: ""
             }}
             validationSchema={validationSchema}
+            enableReinitialize
             onSubmit={data => alert(JSON.stringify(data))}
+            validateOnBlur
           >
-            {({ setFieldValue }) => (
+            {({ setFieldValue, touched }) => (
               <Form>
                 <Input
                   label="Email"
@@ -139,6 +141,7 @@ function Content() {
                 <Input
                   label="Password"
                   name="password"
+                  type="password"
                 />
                 <Select
                   label="Gender"
@@ -155,7 +158,9 @@ function Content() {
                   ]}
                   setFieldValue={setFieldValue}
                   fullWidth={true}
+                  variant="standard"
                 />
+                {console.log(touched)}
                 <Button variant="contained" type="submit">
                   Submit
                 </Button>
