@@ -3,59 +3,54 @@ import { Formik, Form } from "formik";
 
 import LoginContainer from "./index.styles";
 import Input from "../../../shared/components/Input";
-import Select from "../../../shared/components/Select";
 import Checkbox from "../../../shared/components/Checkbox";
 
 function Login() {
   return (
     <LoginContainer>
-      <Box>
+      <Box sx={{
+        width: "350px"
+      }}>
+        <Typography textAlign="center" variant="h2">
+          Sign in
+        </Typography>
+        <Typography
+          textAlign="center"
+          sx={{ margin: "1rem 0" }}
+        >
+          Sign in and start managing your candidates
+        </Typography>
         <Formik
           initialValues={{
-            name: "",
-            gender: "",
-            salaried: ""
+            email: "",
+            password: "",
+            remember: false
           }}
           onSubmit={(values) => { console.log(values); }}
         >
-          {({ setFieldValue }) => (
-            <Form>
-              <Typography>
-                Login Container
-              </Typography>
-              <Stack direction="column">
-                <Input
-                  label="Name"
-                  name="name"
-                />
-                <Select
-                  label="Gender"
-                  name="gender"
-                  options={[
-                    {
-                      value: "m",
-                      fieldLabel: "Male"
-                    },
-                    {
-                      value: "f",
-                      fieldLabel: "Female"
-                    }
-                  ]}
-                  setFieldValue={setFieldValue}
-                  fullWidth={true}
-                  variant="standard"
-                />
-                <Checkbox
-                  name="salaried"
-                  label="Salaried"
-                  labelPlacement="end"
-                />
-                <Button variant="contained" type="submit">
-                  Submit
-                </Button>
-              </Stack>
-            </Form>
-          )}
+          <Form>
+            <Stack direction="column">
+              <Input
+                label="Email"
+                name="email"
+                fullWidth
+              />
+              <Input
+                label="Password"
+                name="password"
+                type="password"
+                fullWidth
+              />
+              <Checkbox
+                name="remember"
+                label="Remember this computer"
+                labelPlacement="end"
+              />
+              <Button variant="contained" type="submit">
+                Login
+              </Button>
+            </Stack>
+          </Form>
         </Formik>
       </Box>
     </LoginContainer>

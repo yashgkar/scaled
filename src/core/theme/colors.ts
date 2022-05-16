@@ -17,7 +17,9 @@ export const LightTheme = {
   myColors: {
     bgColor: "#fbf1c7",
     textColor: "#3c3836",
-    subColor: "#a89984"
+    subColor: "#a89984",
+    primary: "#20DF7F",
+    secondary: "#224957"
   }
 };
 
@@ -40,6 +42,8 @@ export const DarkTheme = {
   myColors: {
     bgColor: "#212b42",
     textColor: "#91b4d5",
-    subColor: "#5c7da5"
+    subColor: "#5c7da5",
+    primary: "#224957",
+    secondary: "#20DF7F"
   }
 };

@@ -1,13 +1,10 @@
 
-import { Stack, Typography, Link, Button } from "@mui/material";
+import { Stack, Typography, Link } from "@mui/material";
 import { styled, Box } from "@mui/system";
-import { Formik, Form } from "formik";
-import * as Yup from "yup";
+import { useTranslation } from "react-i18next";
 
-import Input from "../../../../shared/components/Input";
 import LOGO from "../../../../logo.svg";
 import "./animation.css";
-import Select from "../../../../shared/components/Select";
 
 const ContentContainer = styled(Box)(({ theme }) => ({
   height: "100%",
@@ -17,12 +14,7 @@ const ContentContainer = styled(Box)(({ theme }) => ({
 }));
 
 function Content() {
-  const validationSchema = Yup.object().shape({
-    email: Yup.string().required().email(),
-    password: Yup.string().required(),
-    gender: Yup.string().required()
-  });
-
+  const { t } = useTranslation();
   const links = [{
     link: "https://formik.org/",
     name: "Formik"
@@ -56,7 +48,7 @@ function Content() {
           variant="h3"
           sx={{ mt: 3, color: "myColors.textColor" }}
         >
-          Welcome to Scaled React app!
+          {t("header.brand_name")}
         </Typography>
         <Typography
           variant="body1"
@@ -120,54 +112,6 @@ function Content() {
             <br />
             You can test this form below.
           </Typography>
-        </Box>
-        <Box sx={{ m: 3 }}>
-          <Formik
-            initialValues={{
-              email: "",
-              password: ""
-            }}
-            validationSchema={validationSchema}
-            enableReinitialize
-            onSubmit={data => alert(JSON.stringify(data))}
-            validateOnBlur
-          >
-            {({ setFieldValue, touched }) => (
-              <Form>
-                <Input
-                  label="Email"
-                  name="email"
-                />
-                <Input
-                  label="Password"
-                  name="password"
-                  type="password"
-                />
-                <Select
-                  label="Gender"
-                  name="gender"
-                  options={[
-                    {
-                      value: "m",
-                      fieldLabel: "Male"
-                    },
-                    {
-                      value: "f",
-                      fieldLabel: "Female"
-                    }
-                  ]}
-                  setFieldValue={setFieldValue}
-                  fullWidth={true}
-                  variant="standard"
-                />
-                {console.log(touched)}
-                <Button variant="contained" type="submit">
-                  Submit
-                </Button>
-              </Form>
-            )}
-
-          </Formik>
         </Box>
       </Stack>
     </ContentContainer>
