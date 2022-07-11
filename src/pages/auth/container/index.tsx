@@ -14,12 +14,6 @@ function Login() {
         <Typography textAlign="center" variant="h2">
           Sign in
         </Typography>
-        <Typography
-          textAlign="center"
-          sx={{ margin: "1rem 0" }}
-        >
-          Sign in and start managing your candidates
-        </Typography>
         <Formik
           initialValues={{
             email: "",
