@@ -27,10 +27,11 @@
 			"error",
 			{
 				"js": "never",
-				"mjs": "never",
 				"jsx": "never",
 				"ts": "never",
-				"tsx": "never"
+				"tsx": "never",
+				"json": "off",
+				"styles": "off"
 			}
 		],
 		"import/no-unresolved": [0, { "caseSensitive": false }],
@@ -43,6 +44,22 @@
 				"exports": "never",
 				"functions": "never"
 			}
-		]
+		],
+		"linebreak-style": 0,
+		"semi": [2, "never"],
+		"no-tabs": [
+			"error",
+			{
+				"allowIndentationTabs": true
+			}
+		],
+		"default-param-last": 0,
+		"no-shadow": "off",
+		"no-unused-vars": "off",
+		"@typescript-eslint/no-unused-vars": "error",
+		"indent": [2, "tab", { "SwitchCase": 1, "VariableDeclarator": 1 }],
+		"react/prop-types": 0,
+		"react/jsx-indent": [2, "tab"],
+		"react/jsx-indent-props": [2, "tab"]
 	}
 }

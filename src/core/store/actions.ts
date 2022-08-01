@@ -1,4 +1,4 @@
-import { AppDispatch } from "../../store/store";
+import { AppDispatch } from "../../store/store"
 
 export enum CORE_ACTIONS {
   TOGGLE_APP_THEME = "TOGGLE_APP_THEME"
@@ -7,7 +7,7 @@ export enum CORE_ACTIONS {
 export function toggleAppTheme() {
   return (dispatch: AppDispatch) => {
     dispatch({
-      type: CORE_ACTIONS.TOGGLE_APP_THEME,
-    });
-  };
+      type: CORE_ACTIONS.TOGGLE_APP_THEME
+    })
+  }
 }

@@ -1,31 +1,30 @@
-import { createTheme } from "@mui/material";
+import { createTheme } from "@mui/material"
 
 // file imports
-import { DarkTheme, LightTheme } from "./colors";
-import SFUITextBold from "../../assets/sf-ui/SFUIText-Bold.ttf";
-import SFUITextBoldItalic from "../../assets/sf-ui/SFUIText-BoldItalic.ttf";
-import SFUITextHeavy from "../../assets/sf-ui/SFUIText-Heavy.ttf";
-import SFUITextHeavyItalic from "../../assets/sf-ui/SFUIText-HeavyItalic.ttf";
-import SFUITextLight from "../../assets/sf-ui/SFUIText-Light.ttf";
-import SFUITextLightItalic from "../../assets/sf-ui/SFUIText-LightItalic.ttf";
-import SFUITextMedium from "../../assets/sf-ui/SFUIText-Medium.ttf";
-import SFUITextMediumItalic from "../../assets/sf-ui/SFUIText-MediumItalic.ttf";
-import SFUITextRegular from "../../assets/sf-ui/SFUIText-Regular.ttf";
-import SFUITextRegularItalic from "../../assets/sf-ui/SFUIText-RegularItalic.ttf";
-import SFUITextSemiBold from "../../assets/sf-ui/SFUIText-Semibold.ttf";
-import SFUITextSemiboldItalic from "../../assets/sf-ui/SFUIText-SemiboldItalic.ttf";
+import { DarkTheme, LightTheme } from "./colors"
+import SFUITextBold from "../../assets/sf-ui/SFUIText-Bold.ttf"
+import SFUITextBoldItalic from "../../assets/sf-ui/SFUIText-BoldItalic.ttf"
+import SFUITextHeavy from "../../assets/sf-ui/SFUIText-Heavy.ttf"
+import SFUITextHeavyItalic from "../../assets/sf-ui/SFUIText-HeavyItalic.ttf"
+import SFUITextLight from "../../assets/sf-ui/SFUIText-Light.ttf"
+import SFUITextLightItalic from "../../assets/sf-ui/SFUIText-LightItalic.ttf"
+import SFUITextMedium from "../../assets/sf-ui/SFUIText-Medium.ttf"
+import SFUITextMediumItalic from "../../assets/sf-ui/SFUIText-MediumItalic.ttf"
+import SFUITextRegular from "../../assets/sf-ui/SFUIText-Regular.ttf"
+import SFUITextRegularItalic from "../../assets/sf-ui/SFUIText-RegularItalic.ttf"
+import SFUITextSemiBold from "../../assets/sf-ui/SFUIText-Semibold.ttf"
+import SFUITextSemiboldItalic from "../../assets/sf-ui/SFUIText-SemiboldItalic.ttf"
 
-const AppTheme = (themeMode: boolean) => {
-	return createTheme({
-		typography: {
-			fontFamily: "SFUI-Text, sans-serif",
-		},
-		palette: {
-			...(themeMode ? DarkTheme : LightTheme)
-		},
-		components: {
-			MuiCssBaseline: {
-				styleOverrides: `
+const AppTheme = (themeMode: boolean) => createTheme({
+	typography: {
+		fontFamily: "SFUI-Text, sans-serif"
+	},
+	palette: {
+		...(themeMode ? DarkTheme : LightTheme)
+	},
+	components: {
+		MuiCssBaseline: {
+			styleOverrides: `
 					@font-face {
 						font-family: 'SFUI-Text';
 						font-style: normal;
@@ -111,16 +110,15 @@ const AppTheme = (themeMode: boolean) => {
 						src: local('SFUI-Text'), url(${SFUITextSemiboldItalic}) format('truetype');
 					}
 				`
-			},
-			MuiTypography: {
-				styleOverrides: {
-					root: {
-						fontFamily: "SFUI-Text, sans-serif"
-					}
+		},
+		MuiTypography: {
+			styleOverrides: {
+				root: {
+					fontFamily: "SFUI-Text, sans-serif"
 				}
 			}
 		}
-	});
-};
+	}
+})
 
-export default AppTheme;
+export default AppTheme
